@@ -1,0 +1,116 @@
+Implicit wait :- 
+
+Driver.manage().Timeouts().Implicitilywait(Duration.ofSecond(10));
+
+Explicit wait
+
+Webdriverwait wait = new Webdriverwait(driver.Duration.ofsecond(10));
+wait.until(expectedconditions.visibilityofelementlocated(By.xpath("locator")));
+
+Conditions : -
+
+visibilityOfElementLocated 
+elementToBeClickable 
+presenceOfElementLocated
+invisibilityOfElementLocated
+elementToBeSelected
+elementSelectionStateToBe
+elementStaleness
+alertIsPresent
+titleIs / titleContains
+urlToBe / urlContains / urlMatches
+frameToBeAvailableAndSwitchToIt
+
+Fluent wait 
+
+Wait<webdriver> wait = new fluentWait<>(driver).
+withtimeout(Duration.ofsecond(30)).
+pollingevery(Duration.ofsecond(10)).
+ignore(nosuchelementexception.class);
+
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("elementId")));
+
+
+click and hold and move to a element
+
+Actions a = new Actions(driver):
+a.clickandhold(src).movetoelement(target).release().build().perform();
+
+
+drap and drop
+
+a.draganddrop(src,target).perform();
+
+hover
+
+a.movetoelement(locator).perform
+
+movebyoffset
+
+a.movebyoffset(200,400).click().perform();
+
+select all text (Control A)
+
+a.keysdown(keys.control).sendkeys("a").keysup(keys.control).build().perform();
+
+
+Alerts
+
+Alert A = driver.swichto().alert();
+alert.gettext();
+alert.accept();
+alert.dismiss();
+
+Scroll By using JS 
+
+javaexecutor js = (javaexecutor) driver
+js.executescript(windows.scrollby(0,200));
+
+Sendkeys using JS
+
+js.executescript("documnet.getelementByid('elementID').value='Text';")
+
+
+Dropdowns
+
+Webelement dropdown = driver.findelement(By.xpath("locator");
+
+Select select = new Select(dropdown);
+
+select.selectbyvisibletext("Value");
+select.selectbyindex(3);
+select.selectbyvalue("value");
+
+list<webelement> dropdownvalue = select.getoptions();
+
+for(webelement i : dropdownvalue)
+
+{
+System.out.println(i.gettext());
+}
+
+Screenshot
+
+takescreenshot ts = (takescreenshot) driver;
+file src = ts.getscreenshotas(outputtype.file);
+file destination = new file(desiredpath.png);
+fileutils.copyfile(src,destination);
+
+
+File Upload Robot class
+
+StringSelection ss = new StringSelection("C:\\file.txt");
+Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+
+Robot robot = new Robot();
+
+// Paste (CTRL + V)
+robot.keyPress(KeyEvent.VK_CONTROL);
+robot.keyPress(KeyEvent.VK_V);
+
+robot.keyRelease(KeyEvent.VK_V);
+robot.keyRelease(KeyEvent.VK_CONTROL);
+
+// Press Enter
+robot.keyPress(KeyEvent.VK_ENTER);
+robot.keyRelease(KeyEvent.VK_ENTER);
